@@ -1,0 +1,396 @@
+/* --- CSS Variables & Reset --- */
+:root {
+    --bg-color-dark: #0a0a0a;
+    --text-color-light: #f5f5f5;
+    --accent-color: #d4af37;
+    /* Cinematic Gold */
+    --accent-color-hover: #f1c40f;
+    --font-cinematic: 'Cinzel', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --transition-speed: 0.4s;
+    --section-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-light);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3 {
+    font-family: var(--font-cinematic);
+    letter-spacing: 2px;
+}
+
+/* --- Layout & Sections --- */
+.section {
+    width: 100%;
+    min-height: var(--section-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- Hero Section & Video Background --- */
+.hero {
+    /* Ensure the hero section takes up exactly one viewport height */
+    height: 100vh;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    /* Ensures video covers the whole area without distortion */
+    /* Add cinematic color grading right on the video if needed */
+    filter: contrast(1.1) brightness(0.8) sepia(0.2) saturate(0.8);
+    /* For smooth playback, keep transform hardware accelerated */
+    transform: translateZ(0);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Cinematic vignette to draw focus to the center */
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 6rem);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #fff, #b3b3b3);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--accent-color);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    animation: slideUpFade 2s ease-in-out forwards 0.5s;
+    opacity: 0;
+}
+
+/* --- Funky Hamburger Menu --- */
+.menu-btn {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--transition-speed) ease-in-out;
+    border-radius: 50%;
+    /* Subtle glow */
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.menu-btn:hover {
+    box-shadow: 0 0 20px var(--accent-color);
+    transform: scale(1.1);
+}
+
+.menu-btn__burger {
+    width: 30px;
+    height: 3px;
+    background: var(--text-color-light);
+    border-radius: 5px;
+    transition: all var(--transition-speed) ease-in-out;
+    position: relative;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: var(--text-color-light);
+    border-radius: 5px;
+    transition: all var(--transition-speed) ease-in-out;
+}
+
+.menu-btn__burger::before {
+    transform: translateY(-10px);
+}
+
+.menu-btn__burger::after {
+    transform: translateY(10px);
+}
+
+/* Menu Button Animation Open State */
+.menu-btn.open .menu-btn__burger {
+    background: transparent;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+    transform: rotate(45deg);
+    background: var(--accent-color);
+}
+
+.menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg);
+    background: var(--accent-color);
+}
+
+/* Fullscreen Nav Overlay */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.nav-menu.open {
+    right: 0;
+}
+
+.nav-menu__list {
+    list-style: none;
+    text-align: center;
+}
+
+.nav-menu__list li {
+    margin: 2rem 0;
+    /* Funky staggered animation start */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease-in-out;
+}
+
+.nav-menu.open .nav-menu__list li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays */
+.nav-menu.open .nav-menu__list li:nth-child(1) {
+    transition-delay: 0.3s;
+}
+
+.nav-menu.open .nav-menu__list li:nth-child(2) {
+    transition-delay: 0.4s;
+}
+
+.nav-menu.open .nav-menu__list li:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+.nav-menu__link {
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-family: var(--font-cinematic);
+    text-transform: uppercase;
+    position: relative;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.nav-menu__link:hover {
+    color: var(--accent-color);
+}
+
+.nav-menu__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-menu__link:hover::after {
+    width: 100%;
+}
+
+/* --- Section 2: About Profile --- */
+.about-section {
+    background: linear-gradient(to bottom, var(--bg-color-dark) 0%, #1a1a1a 100%);
+    padding: 4rem 2rem;
+    /* Adding subtle noise texture for a gritty, action-oriented feel if needed, handled via gradients for now */
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column-reverse;
+    /* Stack cleanly on mobile */
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    gap: 4rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+    .about-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.about-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.about-text h2 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #cccccc;
+}
+
+.about-text .highlight-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color-light);
+    margin-top: 3rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+    font-style: italic;
+}
+
+/* Image styling */
+.about-image-wrapper {
+    flex: 1;
+    position: relative;
+    max-width: 450px;
+    width: 100%;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    filter: grayscale(20%) contrast(1.1);
+    /* Slightly gritty filter */
+    transition: filter 0.5s ease, transform 0.5s ease;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.about-image:hover {
+    filter: grayscale(0%) contrast(1.1);
+    transform: translateY(-5px);
+}
+
+/* Cinematic accent behind image */
+.image-accent {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--accent-color);
+    z-index: 1;
+    opacity: 0.5;
+    transition: all 0.5s ease;
+}
+
+.about-image-wrapper:hover .image-accent {
+    top: -10px;
+    right: -10px;
+    opacity: 0.8;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth Scrolling snap (Optional, for strictly 2 sections) */
+html {
+    scroll-snap-type: y mandatory;
+}
+
+.section {
+    scroll-snap-align: start;
+}

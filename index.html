@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todor "Juji" Lazarov | Action Director & Stuntman</title>
+    <!-- Cinematic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Funky Hamburger Menu -->
+    <div class="menu-btn" id="menuBtn">
+        <div class="menu-btn__burger"></div>
+    </div>
+
+    <!-- Fullscreen Menu Overlay -->
+    <nav class="nav-menu" id="navMenu">
+        <ul class="nav-menu__list">
+            <li><a href="#home" class="nav-menu__link">Home</a></li>
+            <li><a href="#about" class="nav-menu__link">About Juji</a></li>
+            <li><a href="#contact" class="nav-menu__link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECTION 1: Landing -->
+    <section id="home" class="section hero">
+        <!-- Video Background Container -->
+        <div class="video-container">
+            <!-- 
+            Placeholder for the video.
+            To achieve liveme.com smoothness, we ensure the video is mp4, muted, looping, and playing seamlessly.
+            We will use CSS filters over this container.
+            -->
+            <video autoplay muted loop playsinline class="bg-video" id="bgVideo">
+                <!-- User needs to provide this file. We'll use a placeholder or assume it's added later -->
+                <source src="assets/juji_bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Overlay for cinematic filters (vignette, contrast, etc.) -->
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">Todor "Juji" Lazarov</h1>
+            <p class="hero-subtitle">Award-Winning Action Director</p>
+        </div>
+    </section>
+
+    <!-- SECTION 2: About / Profile -->
+    <section id="about" class="section about-section">
+        <div class="about-container">
+
+            <div class="about-text">
+                <h2>I’m Todor Lazarov Juji — a stuntman, actor, and stunt coordinator from Bulgaria.</h2>
+
+                <p>You’ve seen my work in Troy, Zero Dark Thirty, and The Expendables 2. I don’t just perform action — I
+                    build it, shape it, and execute it with precision.</p>
+
+                <p>My craft spans horses, high falls, full burns, sword fighting, and rigging. I thrive where risk meets
+                    control. When it comes to fight choreography, there’s no hesitation — only execution.</p>
+
+                <p>In Judo and Sambo, I’m a 15-time Bulgarian champion. I’ve stood on the podium at both the World and
+                    European Championships, earning 3rd place in each.</p>
+
+                <p class="highlight-text">This isn’t just what I do.<br>It’s what I’ve mastered.</p>
+            </div>
+
+            <div class="about-image-wrapper">
+                <img src="assets/juji.png" alt="Todor 'Juji' Lazarov - Action Director" class="about-image">
+                <div class="image-accent"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

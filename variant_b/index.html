@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todor "Juji" Lazarov | Premium Editorial</title>
+    <!-- Cinematic Fonts: Using a sharp serif for headlines and a minimal sans for UI elements -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Accessible Hamburger Menu -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Open Navigation" aria-expanded="false"
+        aria-controls="modalMenu">
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+    </button>
+
+    <!-- Full-Screen Modal Menu -->
+    <nav class="modal-menu" id="modalMenu" aria-hidden="true">
+        <div class="modal-menu__content">
+            <ul class="modal-menu__list">
+                <li><a href="#hero" class="modal-link">The Director</a></li>
+                <li><a href="#bio" class="modal-link">Biography</a></li>
+                <li><a href="#hero" class="modal-link">Showreel</a></li> <!-- External link placeholder -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Scroll Snap Container -->
+    <main class="scroll-container">
+
+        <!-- SECTION 1: Editorial Hero -->
+        <section id="hero" class="section hero">
+            <!-- Video Background with B&W / Grain overlays -->
+            <div class="video-container" id="videoContainer">
+                <video id="heroVideo" autoplay muted loop playsinline preload="auto" class="hero-video"
+                    poster="assets/poster.jpg">
+                    <!-- High-fps source prioritized -->
+                    <source src="assets/hero_clip.mp4" type="video/mp4">
+                    <!-- Fallback if needed -->
+                    <!-- <source src="assets/hero_clip.webm" type="video/webm"> -->
+                    Your browser does not support HTML5 video.
+                </video>
+                <!-- Film overlays -->
+                <div class="grain-overlay"></div>
+                <div class="vignette-overlay"></div>
+            </div>
+
+            <!-- Accessibility Controls -->
+            <button id="videoControl" class="video-control" aria-label="Pause Video" aria-pressed="false">
+                <span class="icon-pause">||</span>
+                <span class="icon-play" style="display:none;">&#9654;</span>
+            </button>
+
+            <!-- Center Headline -->
+            <div class="hero-content">
+                <h1 class="hero-title" id="mainTitle">Todor <span class="hero-title--italic">"Juji"</span> Lazarov</h1>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Portrait & Biography -->
+        <section id="bio" class="section bio-section">
+            <div class="bio-container">
+
+                <div class="bio-image-wrapper">
+                    <img src="assets/portrait.jpg" alt="Portrait of Todor Lazarov" class="bio-portrait"
+                        id="bioPortrait">
+                </div>
+
+                <div class="bio-text-wrapper">
+                    <h2 class="bio-heading">The Master of Execution</h2>
+                    <p class="bio-body">
+                        I’m Todor Lazarov Juji — a stuntman, actor, and stunt coordinator from Bulgaria.
+                        You’ve seen my work in Troy, Zero Dark Thirty, and The Expendables 2. I don’t just perform
+                        action — I build it, shape it, and execute it with precision.
+                    </p>
+                    <p class="bio-body">
+                        My craft spans horses, high falls, full burns, sword fighting, and rigging. I thrive where risk
+                        meets control. When it comes to fight choreography, there’s no hesitation — only execution.
+                    </p>
+
+                    <div class="bio-badges">
+                        <div class="badge">
+                            <span class="badge-number">15x</span>
+                            <span class="badge-label">Bulgarian Champion (Judo/Sambo)</span>
+                        </div>
+                        <div class="badge">
+                            <span class="badge-number">2x</span>
+                            <span class="badge-label">World/Euro 3rd Place</span>
+                        </div>
+                    </div>
+
+                    <a href="#showreel" class="cta-button">Watch Showreel</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
