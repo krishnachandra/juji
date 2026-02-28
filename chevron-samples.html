@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevron Samples — Back to Top</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-bright: #f1c40f;
+            --dark: #0a0a0a;
+            --dark-card: #141414;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 50px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            min-height: 200px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card-label {
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        /* === SHARED CHEVRON SVG === */
+        .chev {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .chev svg {
+            display: block;
+        }
+
+        /* ===================================================
+           #1 — GOLDEN GLOW RING
+           =================================================== */
+        .chev-1 {
+            width: 56px;
+            height: 56px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 30px rgba(212, 175, 55, 0.15), inset 0 0 10px rgba(212, 175, 55, 0.1);
+            animation: glowPulse1 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse1 {
+
+            0%,
+            100% {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 30px rgba(212, 175, 55, 0.15), inset 0 0 10px rgba(212, 175, 55, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.7), 0 0 50px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        /* ===================================================
+           #2 — SOLID GOLD DISC
+           =================================================== */
+        .chev-2 {
+            width: 52px;
+            height: 52px;
+            background: var(--gold);
+            border-radius: 50%;
+            color: var(--dark);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+            animation: solidBounce2 2s ease-in-out infinite;
+        }
+
+        @keyframes solidBounce2 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ===================================================
+           #3 — DOUBLE RING RADAR
+           =================================================== */
+        .chev-3 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+        }
+
+        .chev-3::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 1.5px solid var(--gold);
+            border-radius: 50%;
+            animation: radarRing3 2s ease-out infinite;
+        }
+
+        @keyframes radarRing3 {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        /* ===================================================
+           #4 — ARROW BOUNCE (NO CIRCLE)
+           =================================================== */
+        .chev-4 {
+            color: var(--gold);
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+            animation: arrowBounce4 1.5s ease-in-out infinite;
+        }
+
+        .chev-4 svg {
+            width: 40px;
+            height: 40px;
+            stroke-width: 2.5;
+        }
+
+        @keyframes arrowBounce4 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+            }
+
+            50% {
+                transform: translateY(-10px);
+                filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.9));
+            }
+        }
+
+        /* ===================================================
+           #5 — GOLD SQUARE
+           =================================================== */
+        .chev-5 {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            color: var(--gold);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+            animation: squarePulse5 2.5s ease-in-out infinite;
+        }
+
+        @keyframes squarePulse5 {
+
+            0%,
+            100% {
+                box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+                transform: translateY(0);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+                transform: translateY(-6px);
+            }
+        }
+
+        /* ===================================================
+           #6 — ROTATING BORDER
+           =================================================== */
+        .chev-6 {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            color: var(--gold);
+            position: relative;
+        }
+
+        .chev-6::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: var(--gold);
+            border-right-color: var(--gold);
+            animation: spinBorder6 1.5s linear infinite;
+        }
+
+        @keyframes spinBorder6 {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ===================================================
+           #7 — COMBAT CROSSHAIR
+           =================================================== */
+        .chev-7 {
+            width: 56px;
+            height: 56px;
+            color: var(--gold);
+            overflow: visible;
+        }
+
+        .chev-7::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            width: 16px;
+            height: 16px;
+            border-top: 2px solid var(--gold);
+            border-left: 2px solid var(--gold);
+        }
+
+        .chev-7::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: -4px;
+            width: 16px;
+            height: 16px;
+            border-bottom: 2px solid var(--gold);
+            border-right: 2px solid var(--gold);
+        }
+
+        .chev-7 {
+            animation: crosshairLock7 2s ease-in-out infinite;
+        }
+
+        @keyframes crosshairLock7 {
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+                filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+            }
+        }
+
+        /* ===================================================
+           #8 — EXPLOSIVE BURST
+           =================================================== */
+        .chev-8 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+        }
+
+        .chev-8::before,
+        .chev-8::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+        }
+
+        .chev-8::before {
+            animation: burst8a 2s ease-out infinite;
+        }
+
+        .chev-8::after {
+            animation: burst8b 2s ease-out infinite 0.4s;
+        }
+
+        @keyframes burst8a {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        @keyframes burst8b {
+            0% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
+        }
+
+        /* ===================================================
+           #9 — DOUBLE ARROW STACK
+           =================================================== */
+        .chev-9 {
+            color: var(--gold);
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .chev-9 svg:first-child {
+            animation: stackUp9a 1.5s ease-in-out infinite;
+        }
+
+        .chev-9 svg:last-child {
+            animation: stackUp9b 1.5s ease-in-out infinite;
+            margin-top: -14px;
+            opacity: 0.5;
+        }
+
+        @keyframes stackUp9a {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-6px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes stackUp9b {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translateY(-6px);
+                opacity: 0.7;
+            }
+        }
+
+        /* ===================================================
+           #10 — NEON FLICKER RING
+           =================================================== */
+        .chev-10 {
+            width: 54px;
+            height: 54px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            animation: neonFlicker10 3s ease-in-out infinite;
+        }
+
+        @keyframes neonFlicker10 {
+
+            0%,
+            19%,
+            21%,
+            23%,
+            25%,
+            54%,
+            56%,
+            100% {
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.2), inset 0 0 8px rgba(212, 175, 55, 0.1);
+                opacity: 1;
+            }
+
+            20%,
+            24%,
+            55% {
+                box-shadow: none;
+                opacity: 0.5;
+            }
+        }
+
+        /* ===================================================
+           #11 — GOLD GRADIENT FILL
+           =================================================== */
+        .chev-11 {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+            border-radius: 50%;
+            color: var(--dark);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            animation: gradFloat11 2.5s ease-in-out infinite;
+        }
+
+        @keyframes gradFloat11 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            }
+
+            50% {
+                transform: translateY(-8px);
+                box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+            }
+        }
+
+        /* ===================================================
+           #12 — HEARTBEAT RING
+           =================================================== */
+        .chev-12 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            animation: heartbeat12 1.6s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat12 {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            }
+
+            14% {
+                transform: scale(1.12);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            }
+
+            28% {
+                transform: scale(1);
+            }
+
+            42% {
+                transform: scale(1.15);
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+            }
+
+            56% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        /* ===================================================
+           #13 — BLADE SLASH CIRCLE
+           =================================================== */
+        .chev-13 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: hidden;
+        }
+
+        .chev-13::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: skewX(-25deg);
+            animation: bladeSlash13 3s ease-in-out infinite;
+        }
+
+        @keyframes bladeSlash13 {
+
+            0%,
+            70% {
+                left: -120%;
+            }
+
+            85% {
+                left: 120%;
+            }
+
+            100% {
+                left: 120%;
+            }
+        }
+
+        /* ===================================================
+           #14 — DIAMOND SHAPE
+           =================================================== */
+        .chev-14 {
+            width: 44px;
+            height: 44px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            transform: rotate(45deg);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+            animation: diamondPulse14 2s ease-in-out infinite;
+        }
+
+        .chev-14 svg {
+            transform: rotate(-45deg);
+        }
+
+        @keyframes diamondPulse14 {
+
+            0%,
+            100% {
+                box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 0 50px rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        /* ===================================================
+           #15 — ELECTRIC SPARK
+           =================================================== */
+        .chev-15 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            animation: electricSpark15 3s linear infinite;
+        }
+
+        @keyframes electricSpark15 {
+
+            0%,
+            100% {
+                box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+            }
+
+            48% {
+                box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+            }
+
+            49% {
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.9), 0 0 60px rgba(212, 175, 55, 0.4), 0 -5px 15px rgba(241, 196, 15, 0.4);
+            }
+
+            51% {
+                box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+            }
+
+            52% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.7), 0 5px 10px rgba(241, 196, 15, 0.3);
+            }
+
+            54% {
+                box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+            }
+        }
+
+        /* ===================================================
+           #16 — PULSING GOLD BACKGROUND
+           =================================================== */
+        .chev-16 {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            color: var(--dark);
+            animation: bgPulse16 2s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse16 {
+
+            0%,
+            100% {
+                background: var(--gold);
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+                transform: translateY(0);
+            }
+
+            50% {
+                background: var(--gold-bright);
+                box-shadow: 0 0 30px rgba(241, 196, 15, 0.6);
+                transform: translateY(-6px);
+            }
+        }
+
+        /* ===================================================
+           #17 — BORDER DASH SPIN
+           =================================================== */
+        .chev-17 {
+            width: 54px;
+            height: 54px;
+            border: 2.5px dashed var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            animation: dashSpin17 6s linear infinite;
+            box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.15);
+        }
+
+        @keyframes dashSpin17 {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .chev-17 svg {
+            animation: counterSpin17 6s linear infinite;
+        }
+
+        @keyframes counterSpin17 {
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        /* ===================================================
+           #18 — HALF-GOLD SPLIT
+           =================================================== */
+        .chev-18 {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            color: var(--gold);
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.15) 0%, transparent 100%);
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            animation: splitGlow18 2s ease-in-out infinite;
+        }
+
+        @keyframes splitGlow18 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            }
+
+            50% {
+                transform: translateY(-7px);
+                box-shadow: 0 4px 25px rgba(212, 175, 55, 0.5);
+            }
+        }
+
+        /* ===================================================
+           #19 — FIRE EMBER GLOW
+           =================================================== */
+        .chev-19 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+            animation: emberGlow19 2s ease-in-out infinite alternate;
+        }
+
+        .chev-19::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 15px;
+            background: radial-gradient(ellipse, rgba(212, 175, 55, 0.5) 0%, rgba(241, 196, 15, 0.2) 40%, transparent 70%);
+            filter: blur(5px);
+            animation: emberFlame19 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes emberGlow19 {
+            0% {
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            }
+
+            100% {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 0 50px rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        @keyframes emberFlame19 {
+            0% {
+                opacity: 0.5;
+                transform: translateX(-50%) scaleX(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scaleX(1.3);
+            }
+        }
+
+        /* ===================================================
+           #20 — TACTICAL LOCK-ON
+           =================================================== */
+        .chev-20 {
+            width: 56px;
+            height: 56px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .chev-20::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            animation: lockOn20a 3s ease-in-out infinite;
+        }
+
+        .chev-20::after {
+            content: '';
+            position: absolute;
+            inset: -16px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            animation: lockOn20b 3s ease-in-out infinite;
+        }
+
+        .chev-20 {
+            animation: lockOn20main 3s ease-in-out infinite;
+        }
+
+        @keyframes lockOn20main {
+
+            0%,
+            40% {
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.3);
+            }
+
+            60%,
+            100% {
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            }
+        }
+
+        @keyframes lockOn20a {
+
+            0%,
+            40% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(0.95);
+            }
+
+            60%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes lockOn20b {
+
+            0%,
+            40% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.92);
+            }
+
+            60%,
+            100% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Back-to-Top Chevron Variations</h1>
+    <p class="subtitle">20 action-themed chevron variations in gold. All are animated in their static state.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <span class="card-label">#1 — Golden Glow Ring</span>
+            <a href="#" class="chev chev-1">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#2 — Solid Gold Disc</span>
+            <a href="#" class="chev chev-2">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#3 — Double Ring Radar</span>
+            <a href="#" class="chev chev-3">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#4 — Arrow Bounce (No Circle)</span>
+            <a href="#" class="chev chev-4">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#5 — Gold Square</span>
+            <a href="#" class="chev chev-5">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#6 — Rotating Border</span>
+            <a href="#" class="chev chev-6">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#7 — Combat Crosshair</span>
+            <a href="#" class="chev chev-7">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#8 — Explosive Burst</span>
+            <a href="#" class="chev chev-8">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#9 — Double Arrow Stack</span>
+            <a href="#" class="chev chev-9">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#10 — Neon Flicker Ring</span>
+            <a href="#" class="chev chev-10">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#11 — Gold Gradient Fill</span>
+            <a href="#" class="chev chev-11">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#12 — Heartbeat Ring</span>
+            <a href="#" class="chev chev-12">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#13 — Blade Slash Circle</span>
+            <a href="#" class="chev chev-13">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#14 — Diamond Shape</span>
+            <a href="#" class="chev chev-14">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#15 — Electric Spark</span>
+            <a href="#" class="chev chev-15">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#16 — Pulsing Gold Background</span>
+            <a href="#" class="chev chev-16">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#17 — Border Dash Spin</span>
+            <a href="#" class="chev chev-17">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#18 — Half-Gold Split</span>
+            <a href="#" class="chev chev-18">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#19 — Fire Ember Glow</span>
+            <a href="#" class="chev chev-19">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#20 — Tactical Lock-On</span>
+            <a href="#" class="chev chev-20">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevron Samples 2 — Action, Fire & Combat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-bright: #f1c40f;
+            --fire-orange: #e67e22;
+            --fire-red: #e74c3c;
+            --ember: #ff6b35;
+            --dark: #0a0a0a;
+            --dark-card: #141414;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 55px 30px 45px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            min-height: 210px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card-label {
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .chev {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .chev svg {
+            display: block;
+        }
+
+        /* ===================================================
+           #21 — MUZZLE FLASH
+           Rapid bright flash like a gunshot
+           =================================================== */
+        .chev-21 {
+            width: 54px;
+            height: 54px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            animation: muzzleFlash 2.5s ease-in-out infinite;
+        }
+
+        @keyframes muzzleFlash {
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+                background: transparent;
+            }
+
+            40% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+                background: transparent;
+            }
+
+            42% {
+                box-shadow: 0 0 50px rgba(255, 255, 200, 0.9), 0 0 100px rgba(241, 196, 15, 0.6), 0 0 150px rgba(230, 126, 34, 0.3);
+                background: rgba(255, 255, 200, 0.15);
+            }
+
+            44% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+                background: transparent;
+            }
+
+            46% {
+                box-shadow: 0 0 40px rgba(255, 240, 180, 0.7), 0 0 80px rgba(241, 196, 15, 0.4);
+                background: rgba(255, 255, 200, 0.1);
+            }
+
+            48% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+                background: transparent;
+            }
+        }
+
+        /* ===================================================
+           #22 — FIRE RING
+           Border cycles through fire colors
+           =================================================== */
+        .chev-22 {
+            width: 54px;
+            height: 54px;
+            border: 2.5px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            animation: fireRing 2s ease-in-out infinite;
+        }
+
+        @keyframes fireRing {
+
+            0%,
+            100% {
+                border-color: var(--gold);
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+                color: var(--gold);
+            }
+
+            25% {
+                border-color: var(--fire-orange);
+                box-shadow: 0 0 15px rgba(230, 126, 34, 0.5);
+                color: var(--fire-orange);
+            }
+
+            50% {
+                border-color: var(--fire-red);
+                box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+                color: var(--fire-red);
+            }
+
+            75% {
+                border-color: var(--ember);
+                box-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+                color: var(--ember);
+            }
+        }
+
+        /* ===================================================
+           #23 — BULLET TRACER
+           Streak of light rips upward through the chevron
+           =================================================== */
+        .chev-23 {
+            width: 54px;
+            height: 54px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: hidden;
+        }
+
+        .chev-23::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -100%;
+            width: 3px;
+            height: 30px;
+            margin-left: -1.5px;
+            background: linear-gradient(to top, transparent, var(--gold-bright), rgba(255, 255, 255, 0.9));
+            animation: bulletTracer 2s ease-in infinite;
+        }
+
+        @keyframes bulletTracer {
+            0% {
+                bottom: -100%;
+                opacity: 1;
+            }
+
+            40% {
+                bottom: 120%;
+                opacity: 1;
+            }
+
+            41%,
+            100% {
+                bottom: 120%;
+                opacity: 0;
+            }
+        }
+
+        /* ===================================================
+           #24 — EXPLOSION SHOCKWAVE
+           Multiple expanding rings like a blast
+           =================================================== */
+        .chev-24 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .chev-24::before,
+        .chev-24::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+        }
+
+        .chev-24::before {
+            animation: explode24 2.5s ease-out infinite;
+        }
+
+        .chev-24::after {
+            animation: explode24 2.5s ease-out infinite 0.5s;
+        }
+
+        @keyframes explode24 {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+                border-color: var(--gold);
+            }
+
+            50% {
+                border-color: var(--fire-orange);
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+                border-color: var(--fire-red);
+            }
+        }
+
+        /* ===================================================
+           #25 — SMOKE TRAIL
+           Wispy smoke rising from the chevron
+           =================================================== */
+        .chev-25 {
+            width: 54px;
+            height: 54px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .chev-25::before,
+        .chev-25::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent);
+            filter: blur(4px);
+        }
+
+        .chev-25::before {
+            width: 12px;
+            height: 12px;
+            top: -5px;
+            left: 30%;
+            animation: smoke25a 2s ease-out infinite;
+        }
+
+        .chev-25::after {
+            width: 10px;
+            height: 10px;
+            top: -5px;
+            right: 30%;
+            animation: smoke25b 2s ease-out infinite 0.6s;
+        }
+
+        @keyframes smoke25a {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-30px) scale(2) translateX(-5px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smoke25b {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-25px) scale(1.8) translateX(5px);
+                opacity: 0;
+            }
+        }
+
+        /* ===================================================
+           #26 — RECOIL KICK
+           Chevron kicks back like gun recoil
+           =================================================== */
+        .chev-26 {
+            width: 52px;
+            height: 52px;
+            background: var(--gold);
+            border-radius: 50%;
+            color: var(--dark);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+            animation: recoil26 2s ease-in-out infinite;
+        }
+
+        @keyframes recoil26 {
+
+            0%,
+            70%,
+            100% {
+                transform: translateY(0);
+            }
+
+            72% {
+                transform: translateY(6px) scale(0.95);
+            }
+
+            76% {
+                transform: translateY(-12px) scale(1.05);
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+            }
+
+            82% {
+                transform: translateY(2px);
+            }
+
+            88% {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* ===================================================
+           #27 — FLAME LICK
+           Flames rising from the bottom edge
+           =================================================== */
+        .chev-27 {
+            width: 54px;
+            height: 54px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+        }
+
+        .chev-27 .flame {
+            position: absolute;
+            bottom: -2px;
+            border-radius: 50% 50% 20% 20%;
+            filter: blur(2px);
+        }
+
+        .chev-27 .f1 {
+            left: 10px;
+            width: 8px;
+            height: 14px;
+            background: var(--fire-orange);
+            animation: flame27 0.8s ease-in-out infinite alternate;
+        }
+
+        .chev-27 .f2 {
+            left: 20px;
+            width: 10px;
+            height: 18px;
+            background: var(--gold-bright);
+            animation: flame27 0.6s ease-in-out infinite alternate-reverse;
+        }
+
+        .chev-27 .f3 {
+            left: 32px;
+            width: 8px;
+            height: 12px;
+            background: var(--fire-red);
+            animation: flame27 0.7s ease-in-out infinite alternate;
+        }
+
+        @keyframes flame27 {
+            0% {
+                transform: scaleY(0.7) translateY(0);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scaleY(1.3) translateY(-8px);
+                opacity: 1;
+            }
+        }
+
+        /* ===================================================
+           #28 — CROSSHAIR SCOPE
+           Tactical scope lock with cross lines
+           =================================================== */
+        .chev-28 {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+        }
+
+        .chev-28 .cross-h,
+        .chev-28 .cross-v {
+            position: absolute;
+            background: var(--gold);
+        }
+
+        .chev-28 .cross-h {
+            width: 74px;
+            height: 1px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+        }
+
+        .chev-28 .cross-v {
+            width: 1px;
+            height: 74px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+        }
+
+        .chev-28 {
+            animation: scopeLock28 3s ease-in-out infinite;
+        }
+
+        @keyframes scopeLock28 {
+
+            0%,
+            40% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.7), inset 0 0 15px rgba(212, 175, 55, 0.15);
+                transform: scale(0.95);
+            }
+
+            60% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+                transform: scale(1);
+            }
+
+            100% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        /* ===================================================
+           #29 — RICOCHET SPARK
+           Sparks fly off at angles
+           =================================================== */
+        .chev-29 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .chev-29 .spark {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold-bright);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--gold);
+        }
+
+        .chev-29 .s1 {
+            top: 5px;
+            right: 2px;
+            animation: spark29a 2s ease-out infinite;
+        }
+
+        .chev-29 .s2 {
+            top: 0;
+            left: 10px;
+            animation: spark29b 2s ease-out infinite 0.3s;
+        }
+
+        .chev-29 .s3 {
+            bottom: 5px;
+            left: 0;
+            animation: spark29c 2s ease-out infinite 0.6s;
+        }
+
+        @keyframes spark29a {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(20px, -20px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark29b {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-15px, -25px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark29c {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-20px, 15px);
+                opacity: 0;
+            }
+        }
+
+        /* ===================================================
+           #30 — WARNING HAZARD
+           Pulsing gold/orange hazard strobe
+           =================================================== */
+        .chev-30 {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            color: var(--dark);
+            background: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            animation: hazard30 1.5s ease-in-out infinite;
+        }
+
+        @keyframes hazard30 {
+
+            0%,
+            100% {
+                background: var(--gold);
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            }
+
+            50% {
+                background: var(--fire-orange);
+                box-shadow: 0 0 30px rgba(230, 126, 34, 0.6), 0 0 60px rgba(230, 126, 34, 0.2);
+            }
+        }
+
+        /* ===================================================
+           #31 — STUNT WIRE
+           Thin wire lines pulling upward
+           =================================================== */
+        .chev-31 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .chev-31::before,
+        .chev-31::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to top, var(--gold), transparent);
+        }
+
+        .chev-31::before {
+            left: 15px;
+            animation: wire31 2s ease-in-out infinite;
+        }
+
+        .chev-31::after {
+            right: 15px;
+            animation: wire31 2s ease-in-out infinite 0.3s;
+        }
+
+        @keyframes wire31 {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                height: 30px;
+            }
+
+            50% {
+                opacity: 0.8;
+                height: 45px;
+            }
+        }
+
+        /* ===================================================
+           #32 — INFERNO PULSE
+           Expanding fire-colored glow
+           =================================================== */
+        .chev-32 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            animation: inferno32 2s ease-in-out infinite;
+        }
+
+        @keyframes inferno32 {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.1);
+            }
+
+            33% {
+                box-shadow: 0 0 20px rgba(230, 126, 34, 0.5), 0 0 40px rgba(230, 126, 34, 0.2), 0 0 60px rgba(231, 76, 60, 0.1);
+            }
+
+            66% {
+                box-shadow: 0 0 25px rgba(231, 76, 60, 0.5), 0 0 50px rgba(255, 107, 53, 0.3), 0 0 80px rgba(212, 175, 55, 0.1);
+            }
+        }
+
+        /* ===================================================
+           #33 — SHELL CASING EJECT
+           Small pieces fly off sideways
+           =================================================== */
+        .chev-33 {
+            width: 52px;
+            height: 52px;
+            background: var(--gold);
+            border-radius: 50%;
+            color: var(--dark);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+            overflow: visible;
+        }
+
+        .chev-33 .shell {
+            position: absolute;
+            width: 4px;
+            height: 8px;
+            background: var(--gold-bright);
+            border-radius: 1px;
+            box-shadow: 0 0 4px rgba(212, 175, 55, 0.6);
+        }
+
+        .chev-33 .sh1 {
+            right: -2px;
+            top: 50%;
+            animation: shell33 2.5s ease-out infinite;
+        }
+
+        .chev-33 .sh2 {
+            right: 0;
+            top: 40%;
+            animation: shell33 2.5s ease-out infinite 0.7s;
+        }
+
+        @keyframes shell33 {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(35px, 20px) rotate(120deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===================================================
+           #34 — FUSE BURN
+           Glowing dot traces the circle border
+           =================================================== */
+        .chev-34 {
+            width: 54px;
+            height: 54px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+        }
+
+        .chev-34::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: var(--gold-bright);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold), 0 0 20px var(--fire-orange);
+            transform-origin: 50% calc(50% + 31px);
+            animation: fuseBurn34 2.5s linear infinite;
+        }
+
+        @keyframes fuseBurn34 {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ===================================================
+           #35 — GRENADE PIN
+           Ring with pull-pin animation
+           =================================================== */
+        .chev-35 {
+            width: 52px;
+            height: 52px;
+            border: 2.5px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+            animation: grenadePulse35 3s ease-in-out infinite;
+        }
+
+        .chev-35::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: -4px;
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            animation: pinWiggle35 3s ease-in-out infinite;
+        }
+
+        @keyframes grenadePulse35 {
+
+            0%,
+            70%,
+            100% {
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            }
+
+            80% {
+                box-shadow: 0 0 30px rgba(231, 76, 60, 0.5), 0 0 60px rgba(230, 126, 34, 0.3);
+            }
+        }
+
+        @keyframes pinWiggle35 {
+
+            0%,
+            60%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            65% {
+                transform: rotate(10deg) translate(2px, -2px);
+            }
+
+            70% {
+                transform: rotate(-5deg);
+            }
+
+            75% {
+                transform: rotate(5deg) translate(1px, -1px);
+            }
+        }
+
+        /* ===================================================
+           #36 — IMPACT CRATER
+           Pulsing ring from center like ground impact
+           =================================================== */
+        .chev-36 {
+            width: 52px;
+            height: 52px;
+            background: var(--gold);
+            border-radius: 50%;
+            color: var(--dark);
+            overflow: visible;
+            animation: craterBounce36 2s ease-in-out infinite;
+        }
+
+        .chev-36::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 10px;
+            background: radial-gradient(ellipse, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+            filter: blur(3px);
+            animation: craterShadow36 2s ease-in-out infinite;
+        }
+
+        @keyframes craterBounce36 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-15px);
+            }
+
+            50% {
+                transform: translateY(3px) scale(1.05, 0.95);
+                box-shadow: 0 0 30px rgba(230, 126, 34, 0.5);
+            }
+
+            60% {
+                transform: translateY(-4px) scale(1, 1);
+            }
+
+            70% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes craterShadow36 {
+
+            0%,
+            100% {
+                width: 80px;
+                opacity: 0.4;
+            }
+
+            30% {
+                width: 40px;
+                opacity: 0.2;
+            }
+
+            50% {
+                width: 100px;
+                opacity: 0.7;
+            }
+        }
+
+        /* ===================================================
+           #37 — DOUBLE SLASH
+           Two diagonal slashes sweep across
+           =================================================== */
+        .chev-37 {
+            width: 54px;
+            height: 54px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: hidden;
+        }
+
+        .chev-37::before,
+        .chev-37::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: skewX(-25deg);
+        }
+
+        .chev-37::before {
+            animation: dblSlash37 2.5s ease-in-out infinite;
+        }
+
+        .chev-37::after {
+            animation: dblSlash37 2.5s ease-in-out infinite 0.15s;
+        }
+
+        @keyframes dblSlash37 {
+
+            0%,
+            60% {
+                left: -150%;
+            }
+
+            80% {
+                left: 150%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* ===================================================
+           #38 — BURNING BORDER
+           Border segments glow with fire
+           =================================================== */
+        .chev-38 {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            color: var(--gold);
+            overflow: visible;
+            position: relative;
+        }
+
+        .chev-38::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 2px;
+            background: conic-gradient(var(--gold) 0deg,
+                    var(--fire-orange) 90deg,
+                    var(--fire-red) 180deg,
+                    var(--ember) 270deg,
+                    var(--gold) 360deg);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: burnSpin38 3s linear infinite;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        @keyframes burnSpin38 {
+            to {
+                transform: rotate(360deg);
+                filter: hue-rotate(20deg);
+            }
+        }
+
+        /* ===================================================
+           #39 — FLASHBANG
+           Sudden full brightness flash
+           =================================================== */
+        .chev-39 {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            animation: flashbang39 4s ease-in-out infinite;
+        }
+
+        @keyframes flashbang39 {
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+                background: transparent;
+            }
+
+            48% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+                background: transparent;
+            }
+
+            50% {
+                box-shadow: 0 0 80px rgba(255, 255, 255, 0.9), 0 0 120px rgba(241, 196, 15, 0.5);
+                background: rgba(255, 255, 255, 0.3);
+                border-color: #fff;
+                color: #fff;
+            }
+
+            55% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+                background: rgba(255, 255, 200, 0.05);
+            }
+
+            62% {
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+                background: transparent;
+            }
+        }
+
+        /* ===================================================
+           #40 — FIRE ARROW
+           Arrow with fire trail underneath
+           =================================================== */
+        .chev-40 {
+            color: var(--gold);
+            overflow: visible;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+            animation: fireArrow40 2s ease-in-out infinite;
+        }
+
+        .chev-40 svg {
+            width: 36px;
+            height: 36px;
+            stroke-width: 3;
+        }
+
+        .chev-40::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 14px;
+            background: radial-gradient(ellipse at top, rgba(230, 126, 34, 0.7) 0%, rgba(231, 76, 60, 0.4) 40%, transparent 70%);
+            filter: blur(3px);
+            animation: fireTrail40 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes fireArrow40 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fireTrail40 {
+            0% {
+                opacity: 0.5;
+                height: 10px;
+            }
+
+            100% {
+                opacity: 1;
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Chevrons Vol. 2 — Action & Fire</h1>
+    <p class="subtitle">20 more combat-inspired chevron variations. Guns, fire, stunts, explosions.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <span class="card-label">#21 — Muzzle Flash</span>
+            <a href="#" class="chev chev-21">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#22 — Fire Ring</span>
+            <a href="#" class="chev chev-22">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#23 — Bullet Tracer</span>
+            <a href="#" class="chev chev-23">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#24 — Explosion Shockwave</span>
+            <a href="#" class="chev chev-24">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#25 — Smoke Trail</span>
+            <a href="#" class="chev chev-25">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#26 — Recoil Kick</span>
+            <a href="#" class="chev chev-26">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#27 — Flame Lick</span>
+            <a href="#" class="chev chev-27">
+                <span class="flame f1"></span>
+                <span class="flame f2"></span>
+                <span class="flame f3"></span>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#28 — Crosshair Scope</span>
+            <a href="#" class="chev chev-28">
+                <span class="cross-h"></span>
+                <span class="cross-v"></span>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#29 — Ricochet Spark</span>
+            <a href="#" class="chev chev-29">
+                <span class="spark s1"></span>
+                <span class="spark s2"></span>
+                <span class="spark s3"></span>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#30 — Warning Hazard</span>
+            <a href="#" class="chev chev-30">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#31 — Stunt Wire</span>
+            <a href="#" class="chev chev-31">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#32 — Inferno Pulse</span>
+            <a href="#" class="chev chev-32">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#33 — Shell Casing Eject</span>
+            <a href="#" class="chev chev-33">
+                <span class="shell sh1"></span>
+                <span class="shell sh2"></span>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#34 — Fuse Burn</span>
+            <a href="#" class="chev chev-34">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#35 — Grenade Pin</span>
+            <a href="#" class="chev chev-35">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#36 — Impact Crater</span>
+            <a href="#" class="chev chev-36">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#37 — Double Slash</span>
+            <a href="#" class="chev chev-37">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#38 — Burning Border</span>
+            <a href="#" class="chev chev-38">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#39 — Flashbang</span>
+            <a href="#" class="chev chev-39">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="card-label">#40 — Fire Arrow</span>
+            <a href="#" class="chev chev-40">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
