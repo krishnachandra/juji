@@ -56,6 +56,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Static Noise Flicker on Hero Title
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        // Wait 2 seconds before starting the flicker loop
+        setTimeout(() => {
+            setInterval(() => {
+                // Quick double-flicker burst
+                heroTitle.classList.add('flicker');
+                setTimeout(() => {
+                    heroTitle.classList.remove('flicker');
+                    setTimeout(() => {
+                        heroTitle.classList.add('flicker');
+                        setTimeout(() => {
+                            heroTitle.classList.remove('flicker');
+                        }, 60);
+                    }, 80);
+                }, 60);
+            }, 1500); // Every 1.5 seconds
+        }, 2000);
+    }
+
     // Background Carousel Logic
     const carouselImages = document.querySelectorAll('.carousel-bg');
     const indicators = document.querySelectorAll('.carousel-indicators .indicator');
