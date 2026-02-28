@@ -803,14 +803,7 @@ h3 {
     }
 }
 
-/* Smooth Scrolling snap (Optional, for strictly 2 sections) */
-html {
-    scroll-snap-type: y mandatory;
-}
-
-.section {
-    scroll-snap-align: start;
-}
+/* Smooth Scrolling snap removed to allow scrolling to the footer */
 
 /* --- Hero Buttons --- */
 .hero-cta {
@@ -897,7 +890,8 @@ html {
     color: var(--bg-color-dark);
 }
 
-.btn-instagram {
+.btn-instagram,
+.btn-imdb {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -905,9 +899,49 @@ html {
     opacity: 0.85;
 }
 
-.btn-instagram:hover {
+.btn-instagram:hover,
+.btn-imdb:hover {
     transform: scale(1.15);
     opacity: 1;
+}
+
+/* --- Footer --- */
+.main-footer {
+    width: 100%;
+    background-color: #050505;
+    padding: 30px 20px 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-content p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footer-socials a img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    border-radius: 4px;
+    /* Slight radius for IMDb icon */
 }
 
 @media (max-width: 768px) {
