@@ -204,6 +204,14 @@ h3 {
     .carousel-bg {
         background-position: center;
     }
+
+    .carousel-bg:nth-child(2) {
+        background-position: 80% center;
+    }
+
+    .carousel-bg:nth-child(3) {
+        background-position: 95% center;
+    }
 }
 
 .carousel-bg.active {
