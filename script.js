@@ -45,9 +45,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Optional: Add scroll listener for subtle parallax or header effects if needed later
+    // Back to top floating button visibility
+    const backToTopBtn = document.getElementById("backToTop");
+
     window.addEventListener("scroll", () => {
         const scrollY = window.scrollY;
+
+        // Toggle Back to Top Button
+        if (backToTopBtn) {
+            if (scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        }
+
         // Example: Dim the background video slightly when scrolling down
         const videoOverlay = document.querySelector('.video-overlay');
         if (videoOverlay) {
