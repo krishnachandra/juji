@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             navMenu.classList.add("open");
             if (headerLeft) headerLeft.classList.add("hidden-menu-active");
             document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
+            document.body.classList.add("menu-open");
             isMenuOpen = true;
         } else {
             closeMenu();
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navMenu.classList.remove("open");
         if (headerLeft) headerLeft.classList.remove("hidden-menu-active");
         document.body.style.overflow = "auto";
+        document.body.classList.remove("menu-open");
         isMenuOpen = false;
     }
 

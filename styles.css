@@ -628,7 +628,7 @@ h3 {
 }
 
 .nav-menu__list li {
-    margin: 2rem 0;
+    margin: 1.25rem 0;
     /* Funky staggered animation start */
     opacity: 0;
     transform: translateY(20px);
@@ -638,6 +638,41 @@ h3 {
 .nav-menu.open .nav-menu__list li {
     opacity: 1;
     transform: translateY(0);
+}
+
+.nav-menu__socials {
+    margin-top: 2rem;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease-in-out 0.8s;
+}
+
+.nav-menu.open .nav-menu__socials {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-menu__socials a img {
+    height: 32px;
+    width: auto;
+    display: block;
+    filter: brightness(0.9);
+    transition: transform 0.3s ease;
+}
+
+.nav-menu__socials a:hover img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+/* Hide chevron when menu is open */
+body.menu-open .back-to-top {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 /* Stagger delays */
@@ -656,8 +691,10 @@ h3 {
 .nav-menu__link {
     color: var(--text-color-light);
     text-decoration: none;
-    font-size: 2.5rem;
-    font-family: var(--font-cinematic);
+    font-size: 1.25rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: 2px;
     text-transform: uppercase;
     position: relative;
     padding: 10px 20px;
