@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Director Styling Samples</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .sample-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sample-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sample-title {
+            padding: 15px 20px;
+            background: #1a1a1a;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #333;
+            color: #e0e0e0;
+        }
+
+        .sample-preview {
+            position: relative;
+            height: 200px;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-text {
+            color: #444;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* --- Base Element Styles --- */
+        .indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+            align-items: center;
+        }
+
+        .indicator {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .indicator.active {
+            width: 32px;
+            border-radius: 10px;
+        }
+
+        .progress-container {
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 70%;
+            /* Fixed for visual demo */
+        }
+
+        /* --- Themes --- */
+
+        /* 1. Kinetic Amber */
+        .theme-amber .indicator {
+            border: 2px solid #ff6d00;
+        }
+
+        .theme-amber .indicator.active {
+            background-color: #ff6d00;
+        }
+
+        .theme-amber .progress-bar {
+            background-color: #ff6d00;
+            box-shadow: 0 0 10px #ff6d00;
+        }
+
+        /* 2. Tactical Cyan */
+        .theme-cyan .indicator {
+            border: 2px solid #00e5ff;
+        }
+
+        .theme-cyan .indicator.active {
+            background-color: #00e5ff;
+        }
+
+        .theme-cyan .progress-bar {
+            background-color: #00e5ff;
+            box-shadow: 0 0 10px #00e5ff;
+        }
+
+        /* 3. High Voltage Yellow */
+        .theme-yellow .indicator {
+            border: 2px solid #ffeb3b;
+        }
+
+        .theme-yellow .indicator.active {
+            background-color: #ffeb3b;
+        }
+
+        .theme-yellow .progress-bar {
+            background-color: #ffeb3b;
+            box-shadow: 0 0 10px #ffeb3b;
+        }
+
+        /* 4. Mixed (Amber Bubbles / Cyan Progress) - Currently Applied */
+        .theme-mixed .indicator {
+            border: 2px solid #ff6d00;
+        }
+
+        .theme-mixed .indicator.active {
+            background-color: #ff6d00;
+        }
+
+        .theme-mixed .progress-bar {
+            background-color: #00e5ff;
+            box-shadow: 0 0 10px #00e5ff;
+        }
+
+        /* 5. Minimalist White */
+        .theme-white .indicator {
+            border: 2px solid #ffffff;
+        }
+
+        .theme-white .indicator.active {
+            background-color: #ffffff;
+        }
+
+        .theme-white .progress-bar {
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* 6. Cinematic Gold (Matches site accent) */
+        .theme-gold .indicator {
+            border: 2px solid #d4af37;
+        }
+
+        .theme-gold .indicator.active {
+            background-color: #d4af37;
+        }
+
+        .theme-gold .progress-bar {
+            background-color: #d4af37;
+            box-shadow: 0 0 10px #d4af37;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Action Director Styling Samples</h1>
+
+    <div class="sample-grid">
+
+        <div class="sample-card theme-amber">
+            <div class="sample-title">1. Kinetic Amber (Explosions / Mad Max)</div>
+            <div class="sample-preview">
+                <span class="preview-text">Background Content</span>
+                <div class="indicators">
+                    <span class="indicator"></span><span class="indicator active"></span><span class="indicator"></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sample-card theme-cyan">
+            <div class="sample-title">2. Tactical Cyan (John Wick / Cyberpunk)</div>
+            <div class="sample-preview">
+                <span class="preview-text">Background Content</span>
+                <div class="indicators">
+                    <span class="indicator active"></span><span class="indicator"></span><span class="indicator"></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sample-card theme-yellow">
+            <div class="sample-title">3. High Voltage Yellow (Kill Bill / Danger)</div>
+            <div class="sample-preview">
+                <span class="preview-text">Background Content</span>
+                <div class="indicators">
+                    <span class="indicator"></span><span class="indicator"></span><span class="indicator active"></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sample-card theme-mixed">
+            <div class="sample-title">4. Contrast Mixed (Amber & Cyan) *Applied*</div>
+            <div class="sample-preview">
+                <span class="preview-text">Background Content</span>
+                <div class="indicators">
+                    <span class="indicator active"></span><span class="indicator"></span><span class="indicator"></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sample-card theme-white">
+            <div class="sample-title">5. Minimalist Pure White</div>
+            <div class="sample-preview">
+                <span class="preview-text">Background Content</span>
+                <div class="indicators">
+                    <span class="indicator"></span><span class="indicator active"></span><span class="indicator"></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sample-card theme-gold">
+            <div class="sample-title">6. Cinematic Gold (Matches site accent)</div>
+            <div class="sample-preview">
+                <span class="preview-text">Background Content</span>
+                <div class="indicators">
+                    <span class="indicator"></span><span class="indicator"></span><span class="indicator active"></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Subtle Glitch Variations</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700;800;900&family=Oswald:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            padding: 40px;
+        }
+
+        h1.page-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .page-desc {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 0.9rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 10px 15px;
+            background: #111;
+            border-bottom: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header span {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .replay-btn {
+            background: #222;
+            color: #aaa;
+            border: 1px solid #333;
+            padding: 3px 12px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .replay-btn:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .preview {
+            position: relative;
+            height: 220px;
+            background: radial-gradient(ellipse at center, #1a1a1a 0%, #000 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .ht {
+            /* hero title base */
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .hs {
+            /* hero subtitle base */
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.6rem, 1vw, 0.85rem);
+            color: #d4af37;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* ============================================================
+           VARIATION 1: Micro Twitch
+           Just a tiny horizontal shift every few seconds
+        ============================================================ */
+        .v1.active .ht {
+            animation: fadeIn 1s forwards, v1-twitch 6s infinite 2s;
+        }
+
+        .v1.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v1-twitch {
+
+            0%,
+            95%,
+            100% {
+                transform: none;
+            }
+
+            96% {
+                transform: translateX(-2px);
+            }
+
+            97% {
+                transform: translateX(1px);
+            }
+
+            98% {
+                transform: translateX(-1px);
+            }
+        }
+
+        /* ============================================================
+           VARIATION 2: Static Noise Flicker
+           Brief opacity drop like analog static
+        ============================================================ */
+        .v2.active .ht {
+            animation: fadeIn 1s forwards, v2-static 4s infinite 2s;
+        }
+
+        .v2.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v2-static {
+
+            0%,
+            92%,
+            100% {
+                opacity: 1;
+            }
+
+            93% {
+                opacity: 0.6;
+            }
+
+            94% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 0.4;
+            }
+
+            96% {
+                opacity: 1;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 3: Color Channel Split
+           Red/cyan offset flash
+        ============================================================ */
+        .v3 .ht {
+            text-shadow: none;
+        }
+
+        .v3.active .ht {
+            animation: fadeIn 1s forwards, v3-channel 5s infinite 2s;
+        }
+
+        .v3.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v3-channel {
+
+            0%,
+            94%,
+            100% {
+                text-shadow: none;
+            }
+
+            95% {
+                text-shadow: -2px 0 rgba(255, 0, 0, 0.7), 2px 0 rgba(0, 255, 255, 0.7);
+            }
+
+            97% {
+                text-shadow: 1px 0 rgba(255, 0, 0, 0.4), -1px 0 rgba(0, 255, 255, 0.4);
+            }
+        }
+
+        /* ============================================================
+           VARIATION 4: Scanline Pass
+           A horizontal line sweeps down
+        ============================================================ */
+        .v4 .preview {
+            overflow: hidden;
+        }
+
+        .v4 .preview::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            top: -10%;
+            pointer-events: none;
+        }
+
+        .v4.active .ht {
+            animation: fadeIn 1s forwards;
+        }
+
+        .v4.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        .v4.active .preview::after {
+            animation: v4-scan 4s linear infinite 1s;
+        }
+
+        @keyframes v4-scan {
+            0% {
+                top: -5%;
+            }
+
+            100% {
+                top: 105%;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 5: Blur Pulse
+           Very brief focus loss
+        ============================================================ */
+        .v5.active .ht {
+            animation: fadeIn 1s forwards, v5-blur 6s infinite 2s;
+        }
+
+        .v5.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v5-blur {
+
+            0%,
+            93%,
+            100% {
+                filter: blur(0);
+            }
+
+            94% {
+                filter: blur(2px);
+            }
+
+            96% {
+                filter: blur(0);
+            }
+        }
+
+        /* ============================================================
+           VARIATION 6: VHS Tracking
+           Horizontal shift with distortion
+        ============================================================ */
+        .v6.active .ht {
+            animation: fadeIn 1s forwards, v6-vhs 5s infinite 2s;
+        }
+
+        .v6.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v6-vhs {
+
+            0%,
+            90%,
+            100% {
+                transform: none;
+                filter: none;
+            }
+
+            91% {
+                transform: translateX(4px) skewX(2deg);
+            }
+
+            92% {
+                transform: translateX(-3px) skewX(-1deg);
+            }
+
+            93% {
+                transform: translateX(1px);
+                filter: blur(1px);
+            }
+
+            94% {
+                transform: none;
+                filter: none;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 7: Opacity Stutter
+           Rapid on/off like a dying light
+        ============================================================ */
+        .v7.active .ht {
+            animation: fadeIn 1s forwards, v7-stutter 7s infinite 2s;
+        }
+
+        .v7.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v7-stutter {
+
+            0%,
+            92%,
+            100% {
+                opacity: 1;
+            }
+
+            93% {
+                opacity: 0;
+            }
+
+            93.5% {
+                opacity: 1;
+            }
+
+            94% {
+                opacity: 0;
+            }
+
+            94.5% {
+                opacity: 1;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 8: Subtle Shake
+           Earthquake micro-vibration
+        ============================================================ */
+        .v8.active .ht {
+            animation: fadeIn 1s forwards, v8-shake 4s infinite 2s;
+        }
+
+        .v8.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v8-shake {
+
+            0%,
+            90%,
+            100% {
+                transform: translate(0);
+            }
+
+            91% {
+                transform: translate(1px, -1px);
+            }
+
+            92% {
+                transform: translate(-1px, 1px);
+            }
+
+            93% {
+                transform: translate(1px, 0px);
+            }
+
+            94% {
+                transform: translate(-1px, -1px);
+            }
+
+            95% {
+                transform: translate(0);
+            }
+        }
+
+        /* ============================================================
+           VARIATION 9: Distortion Wave
+           Skew X oscillation
+        ============================================================ */
+        .v9.active .ht {
+            animation: fadeIn 1s forwards, v9-wave 6s infinite 2s;
+        }
+
+        .v9.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v9-wave {
+
+            0%,
+            92%,
+            100% {
+                transform: skewX(0);
+            }
+
+            93% {
+                transform: skewX(1.5deg);
+            }
+
+            95% {
+                transform: skewX(-1deg);
+            }
+
+            97% {
+                transform: skewX(0.5deg);
+            }
+        }
+
+        /* ============================================================
+           VARIATION 10: Ghost Echo
+           Faint duplicate offset that appears briefly
+        ============================================================ */
+        .v10 .ht::after {
+            content: 'TODOR "JUJI" LAZAROV';
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: rgba(212, 175, 55, 0.3);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .v10.active .ht {
+            animation: fadeIn 1s forwards;
+        }
+
+        .v10.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        .v10.active .ht::after {
+            animation: v10-echo 5s infinite 2s;
+        }
+
+        @keyframes v10-echo {
+
+            0%,
+            90%,
+            100% {
+                opacity: 0;
+                transform: none;
+            }
+
+            92% {
+                opacity: 1;
+                transform: translate(3px, 2px);
+            }
+
+            95% {
+                opacity: 0.5;
+                transform: translate(-2px, -1px);
+            }
+
+            97% {
+                opacity: 0;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 11: Line Tearing
+           Horizontal clip tear effect
+        ============================================================ */
+        .v11 .ht::before {
+            content: 'TODOR "JUJI" LAZAROV';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            opacity: 0;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .v11.active .ht {
+            animation: fadeIn 1s forwards, v11-base 5s infinite 2s;
+        }
+
+        .v11.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        .v11.active .ht::before {
+            animation: v11-tear 5s infinite 2s;
+        }
+
+        @keyframes v11-base {
+
+            0%,
+            94%,
+            100% {
+                clip-path: none;
+            }
+
+            95% {
+                clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+            }
+
+            96% {
+                clip-path: polygon(0 45%, 100% 45%, 100% 100%, 0 100%);
+            }
+
+            97% {
+                clip-path: none;
+            }
+        }
+
+        @keyframes v11-tear {
+
+            0%,
+            94%,
+            100% {
+                opacity: 0;
+            }
+
+            95% {
+                opacity: 1;
+                clip: rect(40%, 9999px, 100%, 0);
+                transform: translateX(4px);
+            }
+
+            96% {
+                opacity: 1;
+                clip: rect(0, 9999px, 45%, 0);
+                transform: translateX(-3px);
+            }
+
+            97% {
+                opacity: 0;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 12: Signal Interference
+           Color + position jitter combo
+        ============================================================ */
+        .v12.active .ht {
+            animation: fadeIn 1s forwards, v12-signal 4s infinite 2s;
+        }
+
+        .v12.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v12-signal {
+
+            0%,
+            88%,
+            100% {
+                transform: none;
+                text-shadow: none;
+                filter: none;
+            }
+
+            89% {
+                transform: translate(-1px, 1px);
+                text-shadow: 2px 0 #ff0044;
+            }
+
+            90% {
+                transform: translate(2px, -1px);
+                text-shadow: -2px 0 #00ffaa;
+                filter: brightness(1.5);
+            }
+
+            91% {
+                transform: translate(0px, 1px);
+                text-shadow: 1px 0 #ff0044;
+            }
+
+            92% {
+                transform: none;
+                text-shadow: none;
+                filter: none;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 13: Soft Chromatic Pulse
+           Gentle RGB halo that breathes
+        ============================================================ */
+        .v13.active .ht {
+            animation: fadeIn 1s forwards, v13-chroma 4s ease-in-out infinite 2s;
+        }
+
+        .v13.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v13-chroma {
+
+            0%,
+            100% {
+                text-shadow: -1px 0 rgba(255, 0, 0, 0), 1px 0 rgba(0, 255, 255, 0);
+            }
+
+            50% {
+                text-shadow: -1px 0 rgba(255, 0, 0, 0.25), 1px 0 rgba(0, 255, 255, 0.25);
+            }
+        }
+
+        /* ============================================================
+           VARIATION 14: Surveillance Blink
+           Single clean blink like a security cam
+        ============================================================ */
+        .v14.active .ht {
+            animation: fadeIn 1s forwards, v14-blink 8s infinite 2s;
+        }
+
+        .v14.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v14-blink {
+
+            0%,
+            96%,
+            100% {
+                opacity: 1;
+            }
+
+            97% {
+                opacity: 0;
+            }
+
+            98% {
+                opacity: 1;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 15: Horizontal Slide Glitch
+           Text shifts left then snaps back
+        ============================================================ */
+        .v15.active .ht {
+            animation: fadeIn 1s forwards, v15-slide 5s infinite 2s;
+        }
+
+        .v15.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v15-slide {
+
+            0%,
+            93%,
+            100% {
+                transform: translateX(0);
+            }
+
+            94% {
+                transform: translateX(-8px);
+            }
+
+            95% {
+                transform: translateX(3px);
+            }
+
+            96% {
+                transform: translateX(0);
+            }
+        }
+
+        /* ============================================================
+           VARIATION 16: Inversion Flash
+           Brief negative-image flash
+        ============================================================ */
+        .v16.active .ht {
+            animation: fadeIn 1s forwards, v16-invert 6s infinite 2s;
+        }
+
+        .v16.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v16-invert {
+
+            0%,
+            95%,
+            100% {
+                filter: none;
+            }
+
+            96% {
+                filter: invert(1);
+            }
+
+            97% {
+                filter: none;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 17: Scale Punch
+           Micro scale up then back
+        ============================================================ */
+        .v17.active .ht {
+            animation: fadeIn 1s forwards, v17-punch 5s infinite 2s;
+        }
+
+        .v17.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v17-punch {
+
+            0%,
+            93%,
+            100% {
+                transform: scale(1);
+            }
+
+            94% {
+                transform: scale(1.03);
+            }
+
+            96% {
+                transform: scale(0.99);
+            }
+
+            97% {
+                transform: scale(1);
+            }
+        }
+
+        /* ============================================================
+           VARIATION 18: Pixel Drop
+           Vertical pixel-like shift
+        ============================================================ */
+        .v18.active .ht {
+            animation: fadeIn 1s forwards, v18-drop 4s infinite 2s;
+        }
+
+        .v18.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        @keyframes v18-drop {
+
+            0%,
+            92%,
+            100% {
+                transform: none;
+                filter: none;
+            }
+
+            93% {
+                transform: translateY(2px);
+                filter: blur(1px);
+            }
+
+            94% {
+                transform: translateY(-1px);
+            }
+
+            95% {
+                transform: none;
+                filter: none;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 19: Double Vision
+           Brief double-image overlap
+        ============================================================ */
+        .v19 .ht::after {
+            content: 'TODOR "JUJI" LAZAROV';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+        }
+
+        .v19.active .ht {
+            animation: fadeIn 1s forwards;
+        }
+
+        .v19.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        .v19.active .ht::after {
+            animation: v19-double 6s infinite 2s;
+        }
+
+        @keyframes v19-double {
+
+            0%,
+            93%,
+            100% {
+                opacity: 0;
+                transform: none;
+            }
+
+            94% {
+                opacity: 0.6;
+                transform: translate(4px, -2px);
+            }
+
+            96% {
+                opacity: 0.3;
+                transform: translate(2px, -1px);
+            }
+
+            97% {
+                opacity: 0;
+            }
+        }
+
+        /* ============================================================
+           VARIATION 20: Stripe Corruption
+           Horizontal stripe overlay flash
+        ============================================================ */
+        .v20 .preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.03) 2px,
+                    rgba(255, 255, 255, 0.03) 4px);
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .v20.active .ht {
+            animation: fadeIn 1s forwards, v20-corrupt 5s infinite 2s;
+        }
+
+        .v20.active .hs {
+            animation: fadeIn 1s forwards 0.3s;
+        }
+
+        .v20.active .preview::before {
+            animation: v20-stripes 5s infinite 2s;
+        }
+
+        @keyframes v20-corrupt {
+
+            0%,
+            92%,
+            100% {
+                transform: none;
+            }
+
+            93% {
+                transform: translateX(2px) skewX(0.5deg);
+            }
+
+            94% {
+                transform: translateX(-1px);
+            }
+
+            95% {
+                transform: none;
+            }
+        }
+
+        @keyframes v20-stripes {
+
+            0%,
+            92%,
+            100% {
+                opacity: 0;
+            }
+
+            93% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 0;
+            }
+        }
+
+        /* Shared fade-in keyframe */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Initial hidden state */
+        .ht,
+        .hs {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="page-title">20 Subtle Glitch Variations</h1>
+    <p class="page-desc">All subtle, cinematic distortions. Watch each card for 4-8 seconds to see the effect trigger.
+        Click Replay to restart.</p>
+
+    <div class="grid" id="grid"></div>
+
+    <script>
+        const variations = [
+            { cls: 'v1', name: 'Micro Twitch', desc: 'Tiny horizontal jitter' },
+            { cls: 'v2', name: 'Static Noise', desc: 'Analog static opacity flicker' },
+            { cls: 'v3', name: 'Color Channel Split', desc: 'Red/cyan text-shadow flash' },
+            { cls: 'v4', name: 'Scanline Pass', desc: 'Horizontal scanline sweep' },
+            { cls: 'v5', name: 'Blur Pulse', desc: 'Brief focus loss' },
+            { cls: 'v6', name: 'VHS Tracking', desc: 'Horizontal skew distortion' },
+            { cls: 'v7', name: 'Opacity Stutter', desc: 'Rapid on/off flicker' },
+            { cls: 'v8', name: 'Subtle Shake', desc: 'Micro earthquake vibration' },
+            { cls: 'v9', name: 'Distortion Wave', desc: 'Skew oscillation' },
+            { cls: 'v10', name: 'Ghost Echo', desc: 'Faint gold duplicate offset' },
+            { cls: 'v11', name: 'Line Tearing', desc: 'Horizontal clip tear' },
+            { cls: 'v12', name: 'Signal Interference', desc: 'Color + position jitter' },
+            { cls: 'v13', name: 'Chromatic Pulse', desc: 'Gentle RGB halo breathing' },
+            { cls: 'v14', name: 'Surveillance Blink', desc: 'Single clean blink' },
+            { cls: 'v15', name: 'Horizontal Slide', desc: 'Shift left then snap back' },
+            { cls: 'v16', name: 'Inversion Flash', desc: 'Brief negative-image flash' },
+            { cls: 'v17', name: 'Scale Punch', desc: 'Micro scale up/back' },
+            { cls: 'v18', name: 'Pixel Drop', desc: 'Vertical pixel shift' },
+            { cls: 'v19', name: 'Double Vision', desc: 'Brief double-image overlap' },
+            { cls: 'v20', name: 'Stripe Corruption', desc: 'Horizontal stripe overlay flash' },
+        ];
+
+        const grid = document.getElementById('grid');
+        variations.forEach((v, i) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <span>${i + 1}. ${v.name} — ${v.desc}</span>
+                    <button class="replay-btn" onclick="replay(this)">Replay</button>
+                </div>
+                <div class="preview ${v.cls}">
+                    <h1 class="ht">TODOR "JUJI" LAZAROV</h1>
+                    <p class="hs">Award Winning Action Director</p>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Stagger activation on load
+        document.querySelectorAll('.preview').forEach((el, i) => {
+            setTimeout(() => el.classList.add('active'), i * 300);
+        });
+
+        function replay(btn) {
+            const preview = btn.closest('.card').querySelector('.preview');
+            preview.classList.remove('active');
+            void preview.offsetWidth;
+            preview.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

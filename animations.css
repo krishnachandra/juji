@@ -1,0 +1,260 @@
+:root {
+    --bg-dark: #0a0a0a;
+    --text-light: #f5f5f5;
+    --accent: #d4af37;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Montserrat', sans-serif;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: #aaa;
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #fff;
+}
+
+.variants-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.variant-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: #151515;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 768px) {
+    .variant-card {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.variant-info {
+    flex: 1;
+}
+
+.variant-info h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.variant-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.trigger-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--text-light);
+    padding: 12px 24px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.trigger-btn:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+.slider-viewport {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    min-width: 300px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #000;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 4rem;
+    letter-spacing: 12px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+    position: relative;
+    z-index: 10;
+}
+
+/* Background Gradients for Demo Purposes */
+.bg-a {
+    background: linear-gradient(135deg, #4b1313, #1a0505);
+}
+
+.bg-b {
+    background: linear-gradient(135deg, #132a4b, #05101a);
+}
+
+.bg-c {
+    background: linear-gradient(135deg, #4b3d13, #1a1505);
+}
+
+/* =========================================
+   VARIANT 1: THE BOURNE (Shake / Glitch)
+   ========================================= */
+.bourne-slide {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.bourne-slide.shake {
+    animation: cameraShake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes cameraShake {
+
+    10%,
+    90% {
+        transform: translate3d(-2px, 0, 0) scale(1.02);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(3px, 0, 0) scale(1.02);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-3px, 2px, 0) scale(1.02);
+        filter: hue-rotate(90deg);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(3px, -2px, 0) scale(1.02);
+        filter: invert(0.2);
+    }
+}
+
+/* =========================================
+   VARIANT 2: THE EXPENDABLE (Epic Zoom/Dissolve)
+   ========================================= */
+.expendable-slide {
+    transition: opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1.0);
+}
+
+.expendable-slide.active {
+    animation: slowEpicZoom 15s linear forwards;
+}
+
+@keyframes slowEpicZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+/* =========================================
+   VARIANT 3: THE QUICK CUT (RGB Color Split Flash)
+   ========================================= */
+.quickcut-slide {
+    /* No soft transition to start */
+    transition: none;
+}
+
+.quickcut-flash {
+    animation: quickCutRGBFlash 0.3s ease-out forwards;
+}
+
+@keyframes quickCutRGBFlash {
+    0% {
+        opacity: 0.8;
+        filter: invert(1) drop-shadow(0px 0px 10px red);
+        transform: scale(1.05) translate(2px, -2px);
+    }
+
+    50% {
+        opacity: 0.9;
+        filter: drop-shadow(0px 0px 10px blue);
+        transform: scale(1) translate(-2px, 2px);
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+        transform: scale(1) translate(0, 0);
+    }
+}

@@ -9,24 +9,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Oswald:wght@600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=16">
 </head>
 
 <body>
 
-    <!-- Funky Hamburger Menu -->
-    <div class="menu-btn" id="menuBtn">
-        <div class="menu-btn__burger"></div>
-    </div>
+    <!-- Fixed Header based on screenshot -->
+    <header class="main-header">
+
+        <!-- Center pill menu -->
+        <nav class="header-center-menu">
+            <ul>
+                <li><a href="#home" class="active">HOME</a></li>
+                <li><a href="#bts">BTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#about">ABOUT</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="lang-switch">
+                <a href="#" class="lang-active">English</a>
+                <a href="#" class="lang-inactive">Български</a>
+            </div>
+            <div class="menu-icon" id="menuBtn">
+                <div class="menu-icon__burger"></div>
+            </div>
+        </div>
+    </header>
 
     <!-- Fullscreen Menu Overlay -->
     <nav class="nav-menu" id="navMenu">
         <ul class="nav-menu__list">
             <li><a href="#home" class="nav-menu__link">Home</a></li>
-            <li><a href="#about" class="nav-menu__link">About Juji</a></li>
-            <li><a href="#contact" class="nav-menu__link">Contact</a></li>
+            <li><a href="#services" class="nav-menu__link">Services</a></li>
+            <li><a href="#about" class="nav-menu__link">About</a></li>
+            <li><a href="#bts" class="nav-menu__link">BTS</a></li>
         </ul>
     </nav>
 
@@ -34,23 +55,43 @@
     <section id="home" class="section hero">
         <!-- Video Background Container -->
         <div class="video-container">
-            <!-- 
-            Placeholder for the video.
-            To achieve liveme.com smoothness, we ensure the video is mp4, muted, looping, and playing seamlessly.
-            We will use CSS filters over this container.
-            -->
-            <video autoplay muted loop playsinline class="bg-video" id="bgVideo">
-                <!-- User needs to provide this file. We'll use a placeholder or assume it's added later -->
-                <source src="assets/juji_bg.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <!-- Image Carousel Background -->
+            <div class="carousel-bg active" style="background-image: url('assets/carousel_1.jpg');"></div>
+            <div class="carousel-bg" style="background-image: url('assets/carousel_2.jpg');"></div>
+            <div class="carousel-bg" style="background-image: url('assets/carousel_3.jpg');"></div>
+            <div class="carousel-bg" style="background-image: url('assets/carousel_4.jpg');"></div>
+            <div class="carousel-bg" style="background-image: url('assets/carousel_5.jpg');"></div>
             <!-- Overlay for cinematic filters (vignette, contrast, etc.) -->
             <div class="video-overlay"></div>
         </div>
 
         <div class="hero-content">
-            <h1 class="hero-title">Todor "Juji" Lazarov</h1>
-            <p class="hero-subtitle">Award-Winning Action Director</p>
+            <a href="#about" style="text-decoration: none; display: flex; flex-direction: column; align-items: center;">
+                <h1 class="hero-title"
+                    style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: clamp(64px, 8vw, 88px); letter-spacing: 1px; color: #fff; background: none; -webkit-text-fill-color: #fff; margin-bottom: 5px; opacity: 1; animation: none; text-transform: uppercase;">
+                    TODOR "JUJI" LAZAROV</h1>
+                <p class="hero-subtitle"
+                    style="font-family: 'Montserrat', sans-serif; text-transform: none; letter-spacing: 0; font-weight: 600; font-size: clamp(18px, 2vw, 22px); color: #fff; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); opacity: 1; animation: none;">
+                    Award Winning Action Director</p>
+            </a>
+            <div class="hero-cta">
+                <a href="#work" class="btn-primary">View Work</a>
+                <a href="#bts" class="btn-secondary">BTS</a>
+            </div>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <span class="indicator active" data-index="0"></span>
+            <span class="indicator" data-index="1"></span>
+            <span class="indicator" data-index="2"></span>
+            <span class="indicator" data-index="3"></span>
+            <span class="indicator" data-index="4"></span>
+        </div>
+
+        <!-- Carousel Progress Bar -->
+        <div class="carousel-progress-container">
+            <div class="carousel-progress-bar"></div>
         </div>
     </section>
 
@@ -81,7 +122,7 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=7"></script>
 </body>
 
 </html>

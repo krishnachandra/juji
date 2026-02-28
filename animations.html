@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Director Slideshow Variants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="animations.css">
+</head>
+
+<body>
+    <header>
+        <h1>Cinematic Slideshow Variants</h1>
+        <p>Pick the best transition style for Todor "Juji" Lazarov</p>
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+    </header>
+
+    <div class="variants-container">
+
+        <!-- VARIANT 1 -->
+        <div class="variant-card">
+            <div class="variant-info">
+                <h2>1. The "Bourne" Shake</h2>
+                <p>An aggressive, high-energy transition. Uses a fast crossfade coupled with a subtle split-second
+                    camera shake/glitch, simulating rapid handheld action camera work.</p>
+                <button class="trigger-btn" onclick="nextSlide('slider-1', 'bourne')">TRIGGER TRANSITION</button>
+            </div>
+            <div class="slider-viewport" id="slider-1">
+                <div class="slide bg-a active bourne-slide">
+                    <h2>INTENSITY</h2>
+                </div>
+                <div class="slide bg-b bourne-slide">
+                    <h2>SPEED</h2>
+                </div>
+                <div class="slide bg-c bourne-slide">
+                    <h2>PRECISION</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 2 -->
+        <div class="variant-card">
+            <div class="variant-info">
+                <h2>2. The "Expendable" Epic</h2>
+                <p>A massive, slow, continuous dramatic zoom inwards. When transitioning, it uses a very heavy, smooth,
+                    and elongated cinematic dissolve to feel grand and explosive.</p>
+                <button class="trigger-btn" onclick="nextSlide('slider-2', 'expendable')">TRIGGER TRANSITION</button>
+            </div>
+            <div class="slider-viewport" id="slider-2">
+                <div class="slide bg-a active expendable-slide">
+                    <h2>IMPACT</h2>
+                </div>
+                <div class="slide bg-b expendable-slide">
+                    <h2>POWER</h2>
+                </div>
+                <div class="slide bg-c expendable-slide">
+                    <h2>CHAOS</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 3 -->
+        <div class="variant-card">
+            <div class="variant-info">
+                <h2>3. The "Quick Cut" Flash</h2>
+                <p>Instantaneous hard cuts with an extreme RGB color-split flash effect. Simulates raw, visceral fight
+                    scene editing and analog film burns.</p>
+                <button class="trigger-btn" onclick="nextSlide('slider-3', 'quickcut')">TRIGGER TRANSITION</button>
+            </div>
+            <div class="slider-viewport" id="slider-3">
+                <div class="slide bg-a active quickcut-slide">
+                    <h2>FOCUS</h2>
+                </div>
+                <div class="slide bg-b quickcut-slide">
+                    <h2>STRIKE</h2>
+                </div>
+                <div class="slide bg-c quickcut-slide">
+                    <h2>FINISH</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="animations.js"></script>
+</body>
+
+</html>

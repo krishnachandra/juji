@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Text Variations</title>
+    <!-- Cinematic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700;800;900&family=Oswald:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1.page-title {
+            font-family: 'Cinzel', serif;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .sample-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sample-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sample-title {
+            padding: 15px 20px;
+            background: #1a1a1a;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #333;
+            color: #d4af37;
+        }
+
+        .sample-preview {
+            position: relative;
+            height: 300px;
+            /* Placeholder background to simulate a dark cinematic background */
+            background: radial-gradient(circle at center, #333 0%, #050505 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-credit {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #e0e0e0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Variation 1: The Tall Block (Bebas Neue) - closest to image --- */
+        .var-1 .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 8rem);
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .var-1 .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        /* --- Variation 2: The Ultra Impact (Anton) --- */
+        .var-2 .hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 7vw, 7rem);
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            text-shadow: 4px 4px 0px #000;
+        }
+
+        .var-2 .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: #d4af37;
+            /* Gold accent */
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* --- Variation 3: The Modern Action (Oswald Bold) --- */
+        .var-3 .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 6vw, 6rem);
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+        }
+
+        .var-3 .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 600;
+            color: #cccccc;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        /* --- Variation 4: The Wide Cinematic (Montserrat Ultra Bold) --- */
+        .var-4 .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 5rem);
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+        }
+
+        .var-4 .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 0;
+            display: inline-block;
+        }
+
+        /* --- Variation 5: The Ghost Outline (Bebas Neue) --- */
+        .var-5 .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 9vw, 9rem);
+            color: transparent;
+            -webkit-text-stroke: 2px #ffffff;
+            line-height: 1;
+            margin-bottom: 0rem;
+            letter-spacing: 2px;
+        }
+
+        .var-5 .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-weight: 600;
+            color: #d4af37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: #000;
+            padding: 5px 20px;
+            margin-top: -15px;
+            /* Pull it up into the outline */
+            z-index: 2;
+        }
+
+        /* --- Variation 6: The Split Contrast (Montserrat) --- */
+        .var-6 .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 5.5vw, 5.5rem);
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .var-6 .hero-title span {
+            color: #d4af37;
+        }
+
+        .var-6 .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 600;
+            color: #a0a0a0;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        /* --- Variation 7: The Classic Epic (Cinzel Bold) --- */
+        .var-7 .hero-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 5vw, 5rem);
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            letter-spacing: 4px;
+        }
+
+        .var-7 .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 400;
+            color: #d4af37;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        /* --- Variation 8: The Speed/Slant (Oswald Italic) --- */
+        .var-8 .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: clamp(3rem, 7vw, 7rem);
+            color: #ffffff;
+            font-style: italic;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: -5px 0px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .var-8 .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background-color: #d4af37;
+            color: #000;
+            padding: 4px 15px;
+            display: inline-block;
+            transform: skewX(-15deg);
+        }
+
+        /* --- Variation 9: The Layered Block (Anton) --- */
+        .var-9 .hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 7vw, 7rem);
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .var-9 .hero-title::after {
+            content: 'TODOR "JUJI" LAZAROV';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            color: rgba(212, 175, 55, 0.5);
+            /* Gold shadow */
+            z-index: -1;
+        }
+
+        .var-9 .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        /* --- Variation 10: The Subtle Glow (Montserrat Line) --- */
+        .var-10 .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: clamp(2.5rem, 6vw, 6rem);
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .var-10 .hero-title strong {
+            font-weight: 800;
+        }
+
+        .var-10 .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            font-weight: 400;
+            color: #d4af37;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .var-10 .hero-subtitle::before,
+        .var-10 .hero-subtitle::after {
+            content: '';
+            height: 1px;
+            width: 40px;
+            background-color: #d4af37;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="page-title">Hero Text & Tagline Variations</h1>
+
+    <div class="sample-grid">
+
+        <div class="sample-card var-1">
+            <div class="sample-title">1. The Tall Block (Bebas Neue) - Matches Screenshot</div>
+            <div class="sample-preview">
+                <!-- <p class="hero-credit">Action Directed by:</p> -->
+                <h1 class="hero-title">TODOR "JUJI" LAZAROV</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-2">
+            <div class="sample-title">2. Ultra Impact (Anton)</div>
+            <div class="sample-preview">
+                <h1 class="hero-title">TODOR "JUJI" LAZAROV</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-3">
+            <div class="sample-title">3. Modern Action (Oswald Bold)</div>
+            <div class="sample-preview">
+                <h1 class="hero-title">Todor "Juji" Lazarov</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-4">
+            <div class="sample-title">4. Wide Cinematic (Montserrat Ultra Bold)</div>
+            <div class="sample-preview">
+                <h1 class="hero-title">Todor "Juji" Lazarov</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-5">
+            <div class="sample-title">5. Ghost Outline (Bebas Neue)</div>
+            <div class="sample-preview">
+                <h1 class="hero-title">TODOR "JUJI" LAZAROV</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-6">
+            <div class="sample-title">6. Split Contrast (Montserrat, Highlighted Name)</div>
+            <div class="sample-preview">
+                <h1 class="hero-title">Todor <span>"Juji"</span> Lazarov</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-7">
+            <div class="sample-title">7. Classic Epic (Cinzel Bold)</div>
+            <div class="sample-preview">
+                <p class="hero-credit">Action Directed By</p>
+                <h1 class="hero-title">Todor "Juji" Lazarov</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-8">
+            <div class="sample-title">8. Speed & Velocity (Oswald Italic + Highlight Bar)</div>
+            <div class="sample-preview">
+                <h1 class="hero-title">Todor "Juji" Lazarov</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-9">
+            <div class="sample-title">9. Layered 3D Block (Anton offset)</div>
+            <div class="sample-preview">
+                <h1 class="hero-title">TODOR "JUJI" LAZAROV</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+        <div class="sample-card var-10">
+            <div class="sample-title">10. Subtle Glow & Line Decor (Montserrat Light/Bold)</div>
+            <div class="sample-preview">
+                <h1 class="hero-title">Todor <strong>"Juji"</strong> Lazarov</h1>
+                <p class="hero-subtitle">Award Winning Action Director</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
